@@ -1,7 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({ listings, onSearch, searchTerm }) {
+function ListingsContainer({ listings, onSearch, searchTerm, onFilter, filterLocation, hasSortedListings }) {
 
   let updatedListings = listings.filter
   (listing => listing.description.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -11,13 +11,10 @@ function ListingsContainer({ listings, onSearch, searchTerm }) {
     renderListings(updatedListings);
   }
 
-  function clickDeleteItem(deletedItem) {
-    let updatedListings = listings.filter((listing) => listing.id !== deletedItem.id);
-    renderListings(updatedListings);
-  }
-  
-
   function renderListings() {
+
+    
+    
     // Use map and return the JSX for each listing
     return updatedListings.map((listing) => (
       <ListingCard

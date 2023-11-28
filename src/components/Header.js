@@ -1,9 +1,9 @@
 import React from "react";
-import SortAlphabetically from "./sortAlphabetically";
+import SortAlpha from "./SortAlpha";
 import Search from "./Search";
 
 
-function Header({listings, onSearch, searchTerm}) {
+function Header({listings, onSearch, searchTerm, onFilter}) {
   // const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -15,7 +15,7 @@ function Header({listings, onSearch, searchTerm}) {
         gregslist
       </h1>
       <Search listings={listings} onSearch={onSearch} searchTerm={searchTerm}/>
-      <SortAlphabetically listings={listings}/>
+      <SortAlpha listings={listings} onFilter={onFilter}/>
     </header>
   );
 }
