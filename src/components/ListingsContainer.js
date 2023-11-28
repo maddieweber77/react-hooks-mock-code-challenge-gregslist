@@ -1,11 +1,40 @@
 import React from "react";
-// import ListingCard from "./ListingCard";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({ listings, onSearch, searchTerm }) {
+
+  let updatedListings = listings.filter
+  (listing => listing.description.toLowerCase().includes(searchTerm.toLowerCase()))
+
+  function clickDeleteItem(deletedItem) {
+    let updatedListings = listings.filter((listing) => listing.id !== deletedItem.id);
+    renderListings(updatedListings);
+  }
+
+  function clickDeleteItem(deletedItem) {
+    let updatedListings = listings.filter((listing) => listing.id !== deletedItem.id);
+    renderListings(updatedListings);
+  }
+  
+
+  function renderListings() {
+    // Use map and return the JSX for each listing
+    return updatedListings.map((listing) => (
+      <ListingCard
+        key={listing.id} // Add a key prop for each item in the list
+        id={listing.id}
+        description={listing.description}
+        image={listing.image}
+        location={listing.location}
+        handleDeleteItem={clickDeleteItem}
+      />
+    ));
+  }
+  
   return (
     <main>
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {renderListings(updatedListings)}
       </ul>
     </main>
   );

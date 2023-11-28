@@ -1,7 +1,11 @@
 import React from "react";
+import SortAlphabetically from "./sortAlphabetically";
 import Search from "./Search";
 
-function Header() {
+
+function Header({listings, onSearch, searchTerm}) {
+  // const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <header>
       <h1>
@@ -10,7 +14,8 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search listings={listings} onSearch={onSearch} searchTerm={searchTerm}/>
+      <SortAlphabetically listings={listings}/>
     </header>
   );
 }
